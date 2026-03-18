@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #111118;
+    --bg-card: #1a1a26;
+    --bg-hover: #222235;
+    --border: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(109, 77, 255, 0.4);
+    --text-primary: #f0f0ff;
+    --text-secondary: #9090aa;
+    --text-muted: #5a5a75;
+    --brand: #6d4dff;
+    --brand-light: #8878ff;
+    --accent-green: #00e5a0;
+    --accent-pink: #ff3d9a;
+    --accent-amber: #ffb800;
+    --accent-blue: #00b4ff;
+  }
+
+  * {
+    border-color: var(--border);
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Sora', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg-hover);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--brand);
+  }
+
+  ::selection {
+    background: rgba(109, 77, 255, 0.3);
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-dark-700 border border-white/5 rounded-2xl;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-brand-500/30 hover:bg-dark-600;
+  }
+
+  .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-400 text-white font-medium px-4 py-2 rounded-xl transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-white/5 hover:bg-white/10 text-white/80 font-medium px-4 py-2 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-150;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-white/5 text-white/60 hover:text-white font-medium px-3 py-2 rounded-xl transition-all duration-150;
+  }
+
+  .input {
+    @apply bg-dark-600 border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-500/50 focus:bg-dark-700 transition-all duration-150 w-full;
+  }
+
+  .label {
+    @apply text-sm text-white/50 mb-1.5 block font-medium;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium;
+  }
+
+  .stat-card {
+    @apply card p-5 flex flex-col gap-1;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-white/50 hover:text-white hover:bg-white/5 transition-all duration-150 cursor-pointer;
+  }
+
+  .sidebar-link.active {
+    @apply text-white bg-brand-500/15 text-brand-300;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-400 to-accent-blue bg-clip-text text-transparent;
+  }
+
+  .glow-border {
+    box-shadow: 0 0 0 1px rgba(109, 77, 255, 0.3), 0 0 20px rgba(109, 77, 255, 0.1);
+  }
+
+  .mesh-bg {
+    background-image: radial-gradient(at 40% 20%, rgba(109, 77, 255, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(0, 180, 255, 0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(255, 61, 154, 0.04) 0px, transparent 50%);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #8878ff 0%, #00b4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .animate-in {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  .glass {
+    backdrop-filter: blur(12px);
+    background: rgba(26, 26, 38, 0.8);
+  }
+}
+
+/* Chart overrides */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #1a1a26 !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  border-radius: 12px !important;
+}
